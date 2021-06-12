@@ -1,0 +1,44 @@
+#moresell-wrapp{width:98%}
+.tab_btns{width:100%;height:50px;padding:10px;padding-bottom:0;padding-left:0}
+button.button-tab{border:none;border-top:1px solid #ddd;padding:10px 20px;border-left:1px solid #ddd;border-right:1px solid #ddd;font-size:18px;cursor:pointer;height:100%}
+div#export,div#settings{padding:10px;background-color:#fff;border:1px solid #ddd;border-top:transparent}
+#export_table tr,#wookeys tr{text-align:left}
+#export_table tr td,#export_table tr th,#wookeys tr td,#wookeys tr th{width:50%}
+#export{display:flex}
+#urls_table th{background-color:#fff!important}
+#urls_table tr:nth-child(even){background-color:#f2f2f2!important}
+#urls_table tr:hover{background-color:#ddd!important}
+.urls{margin-top:50px}
+.notices{float:right}
+div#post-body{width:100%;padding:10px}
+#urls_table_length select{width:50px}
+table#urls_table thead tr{text-align:left}
+.exportpproduct_wrap{border:1px solid #ddd;display:flex;background:#fff;padding:20px}
+.publishingrool{padding:15px;background:#f0f0f1;margin-left:50px;min-width:300px;height:fit-content;border-radius:3px;box-shadow:0 1px 1px -1px #000}
+.product_select{min-height:fit-content;max-height:300px;padding-right:20px;min-width:200px;background:#f0f0f1;padding:10px;border-radius:3px;overflow:hidden}
+.product_select ul{height:90%;overflow-y:auto}
+.product_select label{border-bottom:1px solid #2271b1;color:#2271b1;padding-bottom:4px;width:100%;display:inline-block}
+span.serial{min-width:20px;display:inline-block;text-align:right;margin-right:5px;color:#2271b1}
+.postbox-header{padding-left:14px}
+.urladdbox{display:flex;justify-content:space-between}
+button#exportbtn{position:relative;text-align:center;display:flex;justify-items:center;min-width:50px}
+.loading{position:absolute;left:0;right:0;visibility:hidden;-webkit-animation-name:spin;-webkit-animation-duration:2s;-webkit-animation-iteration-count:infinite;-webkit-animation-timing-function:linear;-moz-animation-name:spin;-moz-animation-duration:2s;-moz-animation-iteration-count:infinite;-moz-animation-timing-function:linear;-ms-animation-name:spin;-ms-animation-duration:2s;-ms-animation-iteration-count:infinite;-ms-animation-timing-function:linear;animation-name:spin;animation-duration:2s;animation-iteration-count:infinite;animation-timing-function:linear}
+button.delete_url{cursor:pointer;float:right}
+table#wookeys{width:500px}
+table#wookeys td input{width:100%}
+@-ms-keyframes spin{
+from{-ms-transform:rotate(0)}
+to{-ms-transform:rotate(360deg)}
+}
+@-moz-keyframes spin{
+from{-moz-transform:rotate(0)}
+to{-moz-transform:rotate(360deg)}
+}
+@-webkit-keyframes spin{
+from{-webkit-transform:rotate(0)}
+to{-webkit-transform:rotate(360deg)}
+}
+@keyframes spin{
+from{transform:rotate(0)}
+to{transform:rotate(360deg)}
+}
