@@ -23,19 +23,19 @@ jQuery(function ($) {
 		});
 		
 		let url = $('#select__site').val();
-		let cat = $('#select__cat').val();
 		let status = $('#select__status').val();
+		let bonus_rate = $('#bonus_rate').val();
 
-		if (products.length > 0 && url !== "" && cat !== "-1" && status !== "") {
+		if (products.length > 0 && url !== "" && status !== "") {
 			$.ajax({
 				type: "post",
-				url: moresell_ajaxurl.ajaxurl,
+				url: mobilitybuy_ajaxurl.ajaxurl,
 				data: {
 					action: "export_products_to_child",
-					nonce: moresell_ajaxurl.nonce,
+					nonce: mobilitybuy_ajaxurl.nonce,
 					products: products,
 					url: url,
-					cat: cat,
+					bonus_rate: bonus_rate,
 					status: status
 				},
 				dataType: "json",
@@ -45,6 +45,7 @@ jQuery(function ($) {
 					$('.loading').css('visibility', 'visible');
 				},
 				success: function (response) {
+					location.reload();
 					btn.removeAttr('disabled');
 					$('.btntxt').show();
 					$('.loading').css('visibility', 'hidden');
@@ -62,10 +63,10 @@ jQuery(function ($) {
 			let urlid = $(this).attr('data-id');
 			$.ajax({
 				type: "post",
-				url: moresell_ajaxurl.ajaxurl,
+				url: mobilitybuy_ajaxurl.ajaxurl,
 				data: {
-					action: "moresell_delete_url",
-					nonce: moresell_ajaxurl.nonce,
+					action: "mobilitybuy_delete_url",
+					nonce: mobilitybuy_ajaxurl.nonce,
 					urlid: urlid
 				},
 				success: function (response) {
@@ -74,5 +75,16 @@ jQuery(function ($) {
 			});
 		}
 	});
+
+	// Get bonus val
+	$('.select_product_item').each(function () {
+		$(this).on("click", function () {
+			if($(this).prop("checked") == true){
+				let dataid = $(this).attr('data-id');
+				$('#bonus_rate').val(dataid);
+            }
+		});
+	});
+	
 
 });

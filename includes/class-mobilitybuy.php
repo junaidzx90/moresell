@@ -9,8 +9,8 @@
  * @link       https://www.fiverr.com/junaidzx90
  * @since      1.0.0
  *
- * @package    Moresell
- * @subpackage Moresell/includes
+ * @package    MobilityBuy
+ * @subpackage MobilityBuy/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Moresell
- * @subpackage Moresell/includes
+ * @package    MobilityBuy
+ * @subpackage MobilityBuy/includes
  * @author     Md Junayed <admin@easeare.com>
  */
-class Moresell {
+class MobilityBuy {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Moresell {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Moresell_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      MobilityBuy_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -67,12 +67,12 @@ class Moresell {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		if ( defined( 'MORESELL_VERSION' ) ) {
-			$this->version = MORESELL_VERSION;
+		if ( defined( 'MOBILITYBUY_VERSION' ) ) {
+			$this->version = MOBILITYBUY_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'moresell';
+		$this->plugin_name = 'mobilitybuy';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -85,10 +85,10 @@ class Moresell {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Moresell_Loader. Orchestrates the hooks of the plugin.
-	 * - Moresell_i18n. Defines internationalization functionality.
-	 * - Moresell_Admin. Defines all hooks for the admin area.
-	 * - Moresell_Public. Defines all hooks for the public side of the site.
+	 * - MobilityBuy_Loader. Orchestrates the hooks of the plugin.
+	 * - MobilityBuy_i18n. Defines internationalization functionality.
+	 * - MobilityBuy_Admin. Defines all hooks for the admin area.
+	 * - MobilityBuy_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -102,27 +102,27 @@ class Moresell {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-moresell-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mobilitybuy-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-moresell-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-mobilitybuy-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-moresell-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-mobilitybuy-admin.php';
 
-		$this->loader = new Moresell_Loader();
+		$this->loader = new MobilityBuy_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Moresell_i18n class in order to set the domain and to register the hook
+	 * Uses the MobilityBuy_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -130,7 +130,7 @@ class Moresell {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Moresell_i18n();
+		$plugin_i18n = new MobilityBuy_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -145,26 +145,32 @@ class Moresell {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Moresell_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new MobilityBuy_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		// Menupage register
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'moresell_menu_register' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'mobilitybuy_menu_register' );
 		
 		// Add column in order table
 		$this->loader->add_action('manage_edit-shop_order_columns',$plugin_admin, 'wp_shop_orders_list_table_columnname');
 		$this->loader->add_action('manage_shop_order_posts_custom_column',$plugin_admin,'wp_wc_order_column_view');
 
 		// Delete url
-		$this->loader->add_action("wp_ajax_moresell_delete_url", $plugin_admin, "moresell_delete_url");
-		$this->loader->add_action("wp_ajax_nopriv_moresell_delete_url", $plugin_admin, "moresell_delete_url");
+		$this->loader->add_action("wp_ajax_mobilitybuy_delete_url", $plugin_admin, "mobilitybuy_delete_url");
+		$this->loader->add_action("wp_ajax_nopriv_mobilitybuy_delete_url", $plugin_admin, "mobilitybuy_delete_url");
 
 		// Export products
 		$this->loader->add_action("wp_ajax_export_products_to_child", $plugin_admin, "export_products_to_child");
 		$this->loader->add_action("wp_ajax_nopriv_export_products_to_child", $plugin_admin, "export_products_to_child");
 
-		$this->loader->add_action("rest_api_init", $plugin_admin, "moresell_custom_api_update_product");
+		$this->loader->add_action("rest_api_init", $plugin_admin, "mobilitybuy_custom_api_update_product");
+		// Update post
+		$this->loader->add_action("save_post_product", $plugin_admin, "update_products_to_child");
+
+		// Bonus rate
+		// Display Fields
+		$this->loader->add_action('woocommerce_product_options_pricing', $plugin_admin, 'woocommerce_mobilitybuy_bocus_rate');
 	}
 
 	/**
@@ -191,7 +197,7 @@ class Moresell {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Moresell_Loader    Orchestrates the hooks of the plugin.
+	 * @return    MobilityBuy_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

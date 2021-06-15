@@ -6,8 +6,8 @@ if(isset($_POST['add_url'])){
 }
 
 ?>
-<div id="export" class="moresell-contents tabs">
-    <div id="post-body" class="post-contents">
+<div id="export" class="mobilitybuy-contents tabs">
+    <div id="post-body" class="post-contents mobilitybuy-body">
         <span style="<?php echo ($result == 'Added Successfull.'?'color: #2271b1':'color: red') ?>" class="notices"><?php echo ($result !== ""?$result:'') ?></span>
         <form action="" method="post">
             <button name="export_products" class="button button-primary">Export Product</button>
@@ -25,19 +25,19 @@ if(isset($_POST['add_url'])){
                 </thead>
                 <tbody>
                     <?php
-                    $rows = $this->moresell_urls_table();
+                    $rows = $this->mobilitybuy_urls_table();
 
                     if($rows){
                         $i = 1;
                         foreach($rows as $row){
                             ?>
                             <tr>
-                                <td><?php echo __($i, 'moresell') ?></td>
-                                <td><?php echo __($row->site_url, 'moresell') ?></td>
+                                <td><?php echo __($i, 'mobilitybuy') ?></td>
+                                <td><?php echo __($row->site_url, 'mobilitybuy') ?></td>
                                 <td>
-                                    <?php echo $this->moresell_published_urls($row->site_url); ?>
+                                    <?php echo $this->mobilitybuy_published_urls_v1($row->site_url); ?>
                                 </td>
-                                <td><?php echo __($row->create_at, 'moresell') ?></td>
+                                <td><?php echo __($row->create_at, 'mobilitybuy') ?></td>
                                 <td><button data-id="<?php echo intval($row->ID) ?>" class="delete_url">❌</button></td>
                             </tr>
                             <?php

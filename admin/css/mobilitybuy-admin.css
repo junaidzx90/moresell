@@ -1,4 +1,4 @@
-#moresell-wrapp{width:98%}
+#mobilitybuy-wrapp{width:98%}
 .tab_btns{width:100%;height:50px;padding:10px;padding-bottom:0;padding-left:0}
 button.button-tab{border:none;border-top:1px solid #ddd;padding:10px 20px;border-left:1px solid #ddd;border-right:1px solid #ddd;font-size:18px;cursor:pointer;height:100%}
 div#export,div#settings{padding:10px;background-color:#fff;border:1px solid #ddd;border-top:transparent}
@@ -10,7 +10,7 @@ div#export,div#settings{padding:10px;background-color:#fff;border:1px solid #ddd
 #urls_table tr:hover{background-color:#ddd!important}
 .urls{margin-top:50px}
 .notices{float:right}
-div#post-body{width:100%;padding:10px}
+div.mobilitybuy-body{width:100%;padding:10px}
 #urls_table_length select{width:50px}
 table#urls_table thead tr{text-align:left}
 .exportpproduct_wrap{border:1px solid #ddd;display:flex;background:#fff;padding:20px}

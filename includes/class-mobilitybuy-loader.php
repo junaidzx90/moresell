@@ -6,8 +6,8 @@
  * @link       https://www.fiverr.com/junaidzx90
  * @since      1.0.0
  *
- * @package    Moresell
- * @subpackage Moresell/includes
+ * @package    MobilityBuy
+ * @subpackage MobilityBuy/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Moresell
- * @subpackage Moresell/includes
+ * @package    MobilityBuy
+ * @subpackage MobilityBuy/includes
  * @author     Md Junayed <admin@easeare.com>
  */
-class Moresell_Loader {
+class MobilityBuy_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

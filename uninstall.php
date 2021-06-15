@@ -22,7 +22,7 @@
  * @link       https://www.fiverr.com/junaidzx90
  * @since      1.0.0
  *
- * @package    Moresell
+ * @package    MobilityBuy
  */
 
 // If uninstall not called from WordPress, then exit.

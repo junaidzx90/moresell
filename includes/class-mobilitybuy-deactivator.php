@@ -6,8 +6,8 @@
  * @link       https://www.fiverr.com/junaidzx90
  * @since      1.0.0
  *
- * @package    Moresell
- * @subpackage Moresell/includes
+ * @package    MobilityBuy
+ * @subpackage MobilityBuy/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Moresell
- * @subpackage Moresell/includes
+ * @package    MobilityBuy
+ * @subpackage MobilityBuy/includes
  * @author     Md Junayed <admin@easeare.com>
  */
-class Moresell_Deactivator {
+class MobilityBuy_Deactivator {
 
 	/**
 	 * Short Description. (use period)

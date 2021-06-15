@@ -9,8 +9,8 @@
  * @link       https://www.fiverr.com/junaidzx90
  * @since      1.0.0
  *
- * @package    Moresell
- * @subpackage Moresell/includes
+ * @package    MobilityBuy
+ * @subpackage MobilityBuy/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Moresell
- * @subpackage Moresell/includes
+ * @package    MobilityBuy
+ * @subpackage MobilityBuy/includes
  * @author     Md Junayed <admin@easeare.com>
  */
-class Moresell_i18n {
+class MobilityBuy_i18n {
 
 
 	/**
@@ -35,7 +35,7 @@ class Moresell_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'moresell',
+			'mobilitybuy',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

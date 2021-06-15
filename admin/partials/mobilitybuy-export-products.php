@@ -9,13 +9,15 @@
         <?php
         $products = get_posts( ['post_type' => 'product', 'status' => 'publish', 'nopaging' => true] );
         if($products){
+            global $wpdb;
             $i = 1;
             foreach($products as $product){
+                $bonusrate = $wpdb->get_var("SELECT bonus_rate FROM {$wpdb->prefix}mobilitybuy_published_urls_v1 WHERE product_id = {$product->ID}");
                 ?>
                 <li>
                     <span class="serial"><?php echo ($i) ?>.</span>
-                    <input type="checkbox" name="select_product_item[]" class="select_product_item" value="<?php echo $product->ID; ?>">
-                    <span class="productName"><?php echo __($product->post_title, 'moresell'); ?></span>
+                    <input data-id="<?php echo $bonusrate ?>" type="checkbox" name="select_product_item[]" class="select_product_item" value="<?php echo $product->ID; ?>">
+                    <span class="productName"><?php echo __($product->post_title, 'mobilitybuy'); ?></span>
                 </li>
                 <?php
                 $i++;
@@ -34,12 +36,12 @@
                         <select name="select__site" id="select__site">
                             <option value="-1">Select site</option>
                             <?php
-                            $rows = $this->moresell_urls_table();
+                            $rows = $this->mobilitybuy_urls_table();
                             $i = 1;
                             if($rows){
                                 foreach($rows as $row){
                                     ?>
-                                    <option value="<?php echo intval($row->ID) ?>"><?php echo __($row->site_url, 'moresell') ?></option>
+                                    <option value="<?php echo intval($row->ID) ?>"><?php echo __($row->site_url, 'mobilitybuy') ?></option>
                                     <?php
                                 }
                             }
@@ -50,35 +52,8 @@
             </thead>
             <tbody>
                 <tr>
-                    <th><label for="select__cat">Category</label></th>
-                    <td>
-                        <?php
-                        $args = [
-                            'show_option_all'   => '',
-                            'show_option_none'  => 'Select Category',
-                            'orderby'           => 'id',
-                            'order'             => 'ASC',
-                            'show_count'        => 0,
-                            'hide_empty'        => 1,
-                            'child_of'          => 0,
-                            'exclude'           => '',
-                            'echo'              => 1,
-                            'selected'          => 0,
-                            'hierarchical'      => 0,
-                            'name'              => 'select__cat',
-                            'id'                => 'select__cat',
-                            'class'             => 'select__cat',
-                            'depth'             => 0,
-                            'tab_index'         => 0,
-                            'taxonomy'          => 'product_cat',
-                            'hide_if_empty'     => false,
-                            'option_none_value' => -1,
-                            'value_field'       => 'name',
-                            'required'          => true,
-                        ];
-                        wp_dropdown_categories( $args );
-                        ?>
-                    </td>
+                    <th><label for="bonus_rate">Bonus rate</label></th>
+                    <td><input type="number" name="bonus_rate" id="bonus_rate" placeholder="10%"></td>
                 </tr>
                 <tr>
                     <th>Status</th>
