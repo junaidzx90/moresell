@@ -234,7 +234,7 @@ class MobilityBuy_Admin {
 	}
 
 	// Update post
-	function update_products_to_child($post_id){
+	function update_products_to_child($meta_id, $post_id, $meta_key='', $meta_value=''){
 		if(!get_option('mobilitybuy_consumar_key','') && !get_option('mobilitybuy_consumer_secret','')){
 			die("Setup your api keys!");
 		}
@@ -323,11 +323,11 @@ class MobilityBuy_Admin {
 				if(!$publishedurls){
 					$wpdb->insert($wpdb->prefix.'mobilitybuy_published_urls_v1', array('product_id' => $post_id, 'site_url' => $url,'bonus_rate'=> $bonus_rate,'create_at' => date('Y-m-d')),array('%d','%s','%d','%s'));
 				}else{
-					$wpdb->update($wpdb->prefix.'mobilitybuy_published_urls_v1', array('product_id' => $post_id, 'site_url' => $url,'bonus_rate'=> $bonus_rate,'create_at' => date('Y-m-d')),array('site_url' => $url),array('%d','%s','%d','%s'),array('%s'));
+					$wpdb->update($wpdb->prefix.'mobilitybuy_published_urls_v1', array('product_id' => $post_id, 'site_url' => $url,'bonus_rate'=> $bonus_rate,'create_at' => date('Y-m-d')),array('product_id' => $post_id,'site_url' => $url),array('%d','%s','%d','%s'),array('%d','%s'));
 				}
 			}
 			
-			return 'Success!';
+			return true;
 		}
 	}
 
@@ -435,7 +435,7 @@ class MobilityBuy_Admin {
 					if(!$published){
 						$wpdb->insert($wpdb->prefix.'mobilitybuy_published_urls_v1', array('product_id' => $product, 'site_url' => $url,'bonus_rate'=> $bonus_rate,'create_at' => date('Y-m-d')),array('%d','%s','%d','%s'));
 					}else{
-						$wpdb->update($wpdb->prefix.'mobilitybuy_published_urls_v1', array('product_id' => $product, 'site_url' => $url,'bonus_rate'=> $bonus_rate,'create_at' => date('Y-m-d')),array('site_url' => $url),array('%d','%s','%d','%s'),array('%s'));
+						$wpdb->update($wpdb->prefix.'mobilitybuy_published_urls_v1', array('product_id' => $product, 'site_url' => $url,'bonus_rate'=> $bonus_rate,'create_at' => date('Y-m-d')),array('product_id' => $product,'site_url' => $url),array('%d','%s','%d','%s'),array('%d','%s'));
 					}
 				}
 

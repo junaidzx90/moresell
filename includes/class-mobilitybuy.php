@@ -166,7 +166,7 @@ class MobilityBuy {
 
 		$this->loader->add_action("rest_api_init", $plugin_admin, "mobilitybuy_custom_api_update_product");
 		// Update post
-		$this->loader->add_action("save_post_product", $plugin_admin, "update_products_to_child");
+		$this->loader->add_action("updated_postmeta", $plugin_admin, "update_products_to_child",10,4);
 
 		// Bonus rate
 		// Display Fields
