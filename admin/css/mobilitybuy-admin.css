@@ -15,7 +15,7 @@ div.mobilitybuy-body{width:100%;padding:10px}
 table#urls_table thead tr{text-align:left}
 .exportpproduct_wrap{border:1px solid #ddd;display:flex;background:#fff;padding:20px}
 .publishingrool{padding:15px;background:#f0f0f1;margin-left:50px;min-width:300px;height:fit-content;border-radius:3px;box-shadow:0 1px 1px -1px #000}
-.product_select{min-height:fit-content;max-height:300px;padding-right:20px;min-width:200px;background:#f0f0f1;padding:10px;border-radius:3px;overflow:hidden}
+.product_select{min-height:fit-content;max-height:75vh;padding-right:20px;min-width:200px;background:#f0f0f1;padding:10px;border-radius:3px;overflow:hidden}
 .product_select ul{height:90%;overflow-y:auto}
 .product_select label{border-bottom:1px solid #2271b1;color:#2271b1;padding-bottom:4px;width:100%;display:inline-block}
 span.serial{min-width:20px;display:inline-block;text-align:right;margin-right:5px;color:#2271b1}
@@ -42,3 +42,4 @@ to{-webkit-transform:rotate(360deg)}
 from{transform:rotate(0)}
 to{transform:rotate(360deg)}
 }
+.catlist{background:#fff;padding:2px 15px;border-radius:3px;margin:8px 0;max-height:255px;overflow-y:auto}

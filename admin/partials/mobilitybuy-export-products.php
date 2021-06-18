@@ -56,6 +56,27 @@
                     <td><input type="number" name="bonus_rate" id="bonus_rate" placeholder="10%"></td>
                 </tr>
                 <tr>
+                    <style>
+                        ul.children {
+                            margin-left: 19px;
+                        }
+                    </style>
+                    <th><label for="product_cat">Category</label></th>
+                    <td>
+                        <div class="catlist">
+                            <?php 
+                            wp_terms_checklist(
+                                '',
+                                array(
+                                    'taxonomy'             => 'product_cat',
+                                    'walker'               => new Junu_Category_Checklist,
+                                )
+                            );
+                            ?>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
                     <th>Status</th>
                     <td>
                         <select name="select__status" id="select__status">

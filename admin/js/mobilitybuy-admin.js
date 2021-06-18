@@ -25,6 +25,16 @@ jQuery(function ($) {
 		let url = $('#select__site').val();
 		let status = $('#select__status').val();
 		let bonus_rate = $('#bonus_rate').val();
+		let cats = $(".catlist input:checkbox:checked");
+
+		let catlists = [];
+		cats.each(function () {
+			catlists.push({
+				id: $(this).val(),
+				parent: $(this).attr('parent'),
+				name: $(this).attr('catname'),
+			})
+		});
 
 		if (products.length > 0 && url !== "" && status !== "") {
 			$.ajax({
@@ -36,6 +46,7 @@ jQuery(function ($) {
 					products: products,
 					url: url,
 					bonus_rate: bonus_rate,
+					catlists: catlists,
 					status: status
 				},
 				dataType: "json",

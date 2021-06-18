@@ -370,9 +370,17 @@ class MobilityBuy_Admin {
 					foreach($attachment_ids as $id){
 						$images[] = wp_get_attachment_url($id);
 					}
-					$taxonomy = 'product_cat';
-					$terms = get_the_terms( $product, $taxonomy);
-					$cats_list = $terms;
+
+					$catdata = $_POST['catlists'];
+					$catlist = [];
+					foreach($catdata as $cat => $values){
+						$catlist[] = (object)array(
+							'term_id' =>  $values['id'],
+							'parent' =>  $values['parent'],
+							'name' =>  $values['name'],
+						);
+					}
+
 
 					$terms = wp_get_post_terms( $product, 'product_tag');
 					$product_tags = array();
@@ -421,7 +429,7 @@ class MobilityBuy_Admin {
 						'_weight' => get_post_meta($product,'_weight', true),
 						'_length' => get_post_meta($product,'_length', true),
 						'purchase_note' => (!empty($details->purchase_note)?$details->purchase_note:''),
-						'categories' => (!empty($cats_list)?$cats_list:''),
+						'categories' => (!empty($catlist)?$catlist:''),
 						'attributes' => (!empty($details->attributes)?$details->attributes:''),
 						'_sku' => get_post_meta($product,'_sku', true),
 						'gallery_img' => get_post_meta($product,'_product_image_gallery', true),
